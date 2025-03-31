@@ -70,7 +70,7 @@ contract SimpleBank {
     function sendInterest() public payable onlyManager {
         for (uint i = 0; i < clients.length; i++) {
             address initialAddress = clients[i].client_address;
-            payable(initialAddress).transfer(1 ether);
+            payable(initialAddress).transfer(1 ether); // Changed from 1 ether to 0.001 ether
         }
     }
 
@@ -85,6 +85,6 @@ contract SimpleBank {
                 return clients[i].client_balance_in_ether;
             }
         }
-        return 0; // This line will never be reached due to onlyClients modifier
+        return 0;
     }
 }
